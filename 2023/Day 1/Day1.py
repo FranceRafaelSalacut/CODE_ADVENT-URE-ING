@@ -61,8 +61,8 @@ def get_answer():
 
 
 def main():
-    test()
-    #print(get_answer())
+    #test()
+    print(get_answer())
 
 if __name__ == '__main__':
 	main()
