@@ -1,6 +1,6 @@
 PATH = "2023/Day 2/"
 text_file = "input.txt"
-red, green, blue = 12, 13, 14
+red, green, blue = 0,0,0
 
 
 temp = []
@@ -11,6 +11,7 @@ with open(PATH + text_file, 'r') as file:
 
 answer = 0
 for line in temp:
+    red, green, blue = 0,0,0
     line = line.split("\n")[0]
 
     Game_No = line.split(":")[0]#.split()[1]
@@ -18,7 +19,6 @@ for line in temp:
 
     Draws = line.split(":")[1].split(";")
     
-    Pass = True
     for Draw in Draws:
         Draw = Draw.split(",")
         for Pair in Draw:
@@ -26,16 +26,12 @@ for line in temp:
             Number = int(Number)
             if Color == "red":
                 if Number > red:
-                    Pass = False
-                    break
+                    red = Number
             elif Color == "green":
                 if Number > green:
-                    Pass = False
-                    break
+                    green = Number
             elif Color == "blue":
                 if Number > blue:
-                    Pass = False
-                    break
-    
-    if Pass:
-        print(Game_No)
+                    blue = Number
+
+    print(f"{red}*{green}*{blue}")
