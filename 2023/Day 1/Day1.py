@@ -9,24 +9,24 @@ PATH = "2023/Day 1/"
 text_file = "input.txt"
 
 
-temp = []
-
+answer = 0
 with open(PATH + text_file, 'r') as file:
     for line in file:
-        temp.append(line)
+        for char in line:
+            if char.isnumeric():
+                num1 = char
+                break
 
-sum = 0
-for x in range(0,5):
-    print(temp[x])
-    num1 = num2 = 0
-    for char in temp[x]:
-        if char.isnumeric():
-            num1 = int(char)
-            break
+        for char in reversed(line):
+            if char.isnumeric():
+                num2 = char
+                break
 
-    for char in reversed(temp[x]):
-        if char.isnumeric():
-            num2 = int(char)
-            break
+        #print(f"{num1} + {num2} = {num1 + num2}")
+        answer = answer + int(num1 + num2)
+
+
+print(answer)
+
+
     
-    print(f"{num1} + {num2} = {num1 + num2}")
