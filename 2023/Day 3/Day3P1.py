@@ -172,7 +172,7 @@ def get_answer_1(U_input):
                     number = ""
                     indexes = []
                     #time.sleep(0.5)
-                    test = input()
+                    #test = input()
                     os.system('cls')
                     #print_given()
                     continue
