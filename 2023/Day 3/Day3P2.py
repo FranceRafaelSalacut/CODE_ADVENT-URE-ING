@@ -41,9 +41,61 @@ def get_number(U_input, index1, index2, reverse):
                 break
         else:
             break
-    
     return number
 
+def do_box(U_input, index1, index):
+    # Naming the sides. 
+    top_line = index1-1
+    bottom_line = index1+1
+    first_index = index
+    last_index = index
+
+    print()
+    # Checking the top 
+    if index1 != 0:
+        #top-left
+        if first_index != 0:
+            print(U_input[top_line][first_index-1], end="")
+        else:
+            print(end="")
+        #direct-top
+        print(U_input[top_line][index], end="")
+        #top-right
+        if last_index != len(U_input[index1])-1:
+            print(U_input[top_line][last_index + 1])
+        else:
+            print()
+
+    # Checking sides
+    #left
+    if first_index != 0:
+        print(U_input[index1][first_index-1], end="")
+    else:
+            print(end="")
+
+    print(U_input[index1][index], end="")
+    #right
+    if last_index != len(U_input[index1])-1:
+        print(U_input[index1][last_index+1])
+    else:
+        print()
+
+    # Checking the bottom
+    if index1 != len(U_input)-1:
+        #bottom-left
+        if first_index != 0:
+            print(U_input[bottom_line][first_index-1], end="")
+            
+        #direct-bottom
+        print(U_input[bottom_line][index], end="")
+        #bottom-right
+        if last_index != len(U_input[index1])-1:
+            print(U_input[bottom_line][last_index + 1])
+        else:
+            print()
+
+    print()
+    
 
 def find_adjacent(U_input, index1, index):
     # Naming the sides. 
@@ -56,28 +108,40 @@ def find_adjacent(U_input, index1, index):
     if index1 != 0:
         #top-left
         if U_input[top_line][first_index-1].isnumeric() and first_index != 0:
-            number.append(get_number(U_input,top_line, first_index-1, False))
+            slot = get_number(U_input,top_line, first_index-1, False)
+            if slot not in number:
+                number.append(slot)
         #direct-top
-        elif U_input[top_line][index].isnumeric():
-            number.append(get_number(U_input,top_line, index, False))
+        if U_input[top_line][index].isnumeric():
+            slot = get_number(U_input,top_line, index, False)
+            if slot not in number:
+                number.append(slot)
 
         #top-right
-        elif U_input[top_line][last_index + 1].isnumeric() and last_index != len(U_input[index1])-1:
-            number.append(get_number(U_input,top_line, last_index+1, False))
+        if U_input[top_line][last_index + 1].isnumeric() and last_index != len(U_input[index1])-1:
+            slot = get_number(U_input,top_line, last_index+1, False)
+            if slot not in number:
+                number.append(slot)
         
     # Checking the bottom
     if index1 != len(U_input)-1:
         #bottom-left
         if U_input[bottom_line][first_index-1].isnumeric() and first_index != 0:
-            number.append(get_number(U_input,bottom_line, first_index-1, False))
+            slot = get_number(U_input,bottom_line, first_index-1, False)
+            if slot not in number:
+                number.append(slot)
 
         #direct-bottom
-        elif U_input[bottom_line][index].isnumeric():
-           number.append(get_number(U_input,bottom_line,index, False))
+        if U_input[bottom_line][index].isnumeric():
+           slot = get_number(U_input,bottom_line,index, False)
+           if slot not in number:
+                number.append(slot)
 
         #bottom-right
-        elif U_input[bottom_line][last_index + 1].isnumeric() and last_index != len(U_input[index1])-1:
-            number.append(get_number(U_input,bottom_line,last_index+1, False))
+        if U_input[bottom_line][last_index + 1].isnumeric() and last_index != len(U_input[index1])-1:
+            slot = get_number(U_input,bottom_line,last_index+1, False)
+            if slot not in number:
+                number.append(slot)
         
     # Checking sides
     #left
@@ -91,7 +155,9 @@ def find_adjacent(U_input, index1, index):
             number.append(get_number(U_input,index1,index+1, False))
 
     ic(number)
+    do_box(U_input, index1, index)
     test = input()
+    #time.sleep(0.5)
     os.system("cls")
     if len(number) == 2:
         return int(number[0]) * int(number[1])
