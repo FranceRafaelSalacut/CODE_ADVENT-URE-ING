@@ -10,14 +10,14 @@ with open(PATH + text_file, 'r') as file:
             line = line.split("\n")[0]
             tempo = []
             for char in line:
-                tempo.append(char)
+                tdict = {}
+                tdict[char] = False
+                tempo.append(tdict)
             temp.append(tempo)
         else:
             break
 
 
 
-for x in range(0, len(temp)):
-    for y in range(0, len(temp[x])):
-        print(temp[x][y], end=" ")
-    print("\n---------------------------------------------------------------------------")
+for x in temp:
+    print(x)
