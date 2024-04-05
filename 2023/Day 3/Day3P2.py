@@ -154,10 +154,10 @@ def find_adjacent(U_input, index1, index):
         if U_input[index1][last_index+1].isnumeric():
             number.append(get_number(U_input,index1,index+1, False))
 
-    ic(number)
-    do_box(U_input, index1, index)
-    test = input()
-    #time.sleep(0.5)
+    #ic(number)
+    #do_box(U_input, index1, index)
+    #test = input()
+    #time.sleep(0.1)
     os.system("cls")
     if len(number) == 2:
         return int(number[0]) * int(number[1])
@@ -174,7 +174,7 @@ def get_answer_2(U_input):
     for index1, line in enumerate(U_input):
         for index2, symbol in enumerate(line):
             if symbol == "*":
-                ic(f"{index1+1}")
+                #ic(f"{index1+1}")
                 found = True
 
             if found:
